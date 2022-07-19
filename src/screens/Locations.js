@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from "react-router-dom";
+import Residents from './Residents';
 
 const Locations = () => {
   const [locations, setLocations] = useState([]);
@@ -16,7 +18,9 @@ const Locations = () => {
   return (
     <div>
       {locations?.map((location) => (
-        <div>{location.name}</div>
+        <Link to={`/${location.id}`}>
+          <div key={location.id}>{location.name}</div>
+        </Link>
       ))}
     </div>
   );

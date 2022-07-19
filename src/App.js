@@ -1,11 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
 import Locations from './screens/Locations';
+import { Routes, Route } from "react-router-dom";
+import Residents from './screens/Residents';
+
 
 function App() {
   return (
     <div className="App">
-      <Locations />
+      <Routes>
+        <Route path="/" element={<Locations />} />
+        <Route path=":residentsId" element={<Residents />} />
+      </Routes>
     </div>
   );
 }
