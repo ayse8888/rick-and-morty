@@ -29,13 +29,13 @@ const Residents = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    async function fetchAll() {
-      const fetchResidentsUrl = await Promise.all(
-        newResidentsUrl?.map((url) => fetch(url).then((r) => r.json()))
+    async function fetchAllResidentsUrl() {
+      const results = await Promise.all(
+        newResidentsUrl?.map((url) => fetch(url).then((resp) => resp.json()))
       );
-      setLocationResidents(fetchResidentsUrl);
+      setLocationResidents(results);
     }
-    fetchAll();
+    fetchAllResidentsUrl();
   }, [newResidentsUrl]);
 
   console.log("locationResidents", locationResidents);
