@@ -1,8 +1,8 @@
 import './App.css';
-import Locations from './screens/Locations';
 import { Routes, Route } from "react-router-dom";
-import Residents from './screens/Residents';
-
+import "bootstrap/dist/css/bootstrap.min.css";
+import Locations from './screens/Locations/Locations';
+import Residents from './screens/Residents/Residents';
 
 function App() {
   return (

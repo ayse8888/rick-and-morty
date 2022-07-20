@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { LOCATION_URL } from "../../constants/apiConstant";
 
 export const getLocations = createAsyncThunk(
   "locations/getLocations",
   async () => {
-    return fetch("https://rickandmortyapi.com/api/location").then((res) =>
+    return fetch(LOCATION_URL).then((res) =>
       res.json()
     );
   }
