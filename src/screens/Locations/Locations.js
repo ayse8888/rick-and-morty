@@ -3,7 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { getLocations } from "../../redux/slices/locationSlice";
 import LoadingIndicator from "../../components/LoadingIndicator";
-import './Locations.css'
+import "./Locations.css";
+import { Col, Row } from "react-bootstrap";
+import locationImg from "../../assets/rick-and-morty.jpeg";
+
 
 const Locations = () => {
   const dispatch = useDispatch();
@@ -21,18 +24,33 @@ const Locations = () => {
   }
 
   return (
-    <div>
+    <Col className="locationsListContainer">
+      <h1 className="title">Welcome to My Rick and Morty Page !</h1>
       {locationsData?.map((location) => (
-        <Link to={`/${location.id}`} key={location.id}>
-          <div className="container">
-            <p>Location Name: {location.name}</p>
-            <p>Location Type: {location.type}</p>
-            <p>Location Dimension: {location.dimension}</p>
-            <p>Location Residents: {location.residents.length}</p>
-          </div>
-        </Link>
+        <Row className="flexContainer">
+          <Col sm={6} className="locationImgContainer">
+            <Link to={`/${location.id}`} key={location.id}>
+              <img src={locationImg} alt="" className="locationImg" />
+            </Link>
+          </Col>
+          <Col sm={6} className="locationDetailsContainer">
+            <p>
+              <span className="subTitle">Location:</span> {location.name}
+            </p>
+            <p>
+              <span className="subTitle">Type:</span> {location.type}
+            </p>
+            <p>
+              <span className="subTitle">Dimension:</span> {location.dimension}
+            </p>
+            <p>
+              <span className="subTitle">Residents:</span>{" "}
+              {location.residents.length}
+            </p>
+          </Col>
+        </Row>
       ))}
-    </div>
+    </Col>
   );
 };
 
