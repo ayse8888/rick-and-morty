@@ -7,7 +7,6 @@ import "./Locations.css";
 import { Col, Row } from "react-bootstrap";
 import locationImg from "../../assets/rick-and-morty.jpeg";
 
-
 const Locations = () => {
   const dispatch = useDispatch();
   const locationsData = useSelector(
@@ -27,21 +26,24 @@ const Locations = () => {
     <Col className="locationsListContainer">
       <h1 className="title">Welcome to My Rick and Morty Page !</h1>
       {locationsData?.map((location) => (
-        <Row className="flexContainer">
+        <Row className="locationFlexContainer" key={location.id}>
           <Col sm={6} className="locationImgContainer">
-            <Link to={`/${location.id}`} key={location.id}>
+            <Link to={`/${location.id}`}>
               <img src={locationImg} alt="" className="locationImg" />
             </Link>
           </Col>
           <Col sm={6} className="locationDetailsContainer">
             <p>
-              <span className="subTitle">Location:</span> {location.name}
+              <span className="subTitle">Location:</span>{" "}
+              {location.name ? location.name : "No Name"}
             </p>
             <p>
-              <span className="subTitle">Type:</span> {location.type}
+              <span className="subTitle">Type:</span>{" "}
+              {location.type ? location.type : "No Type"}
             </p>
             <p>
-              <span className="subTitle">Dimension:</span> {location.dimension}
+              <span className="subTitle">Dimension:</span>{" "}
+              {location.dimension ? location.dimension : "No Dimension"}
             </p>
             <p>
               <span className="subTitle">Residents:</span>{" "}

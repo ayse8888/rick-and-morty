@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import LoadingIndicator from "../../components/LoadingIndicator";
+import { STATUS } from "../../constants/statusConstant";
 import { getLocations } from "../../redux/slices/locationSlice";
 import "./Residents.css";
+import { ReactComponent as LeftArrowSVG } from "../../assets/left-arrow.svg";
 
 const Residents = () => {
   const dispatch = useDispatch();
@@ -18,7 +20,8 @@ const Residents = () => {
   const matchedResidentsIds = locationsData?.filter(
     (item) => Number(item.id) === Number(residentsId)
   );
-  const filteredResidents = matchedResidentsIds && matchedResidentsIds[0].residents;
+  const filteredResidents =
+    matchedResidentsIds && matchedResidentsIds[0].residents;
   const residentsUrl = filteredResidents?.map((url) => url);
 
   const [locationResidents, setLocationResidents] = useState([]);
@@ -40,24 +43,81 @@ const Residents = () => {
 
   console.log("locationResidents", locationResidents);
 
+  function getBgColor(condition) {
+    switch (condition) {
+      case STATUS.UNKNOWN:
+        return "#9E9E9E";
+      case STATUS.ALIVE:
+        return "#a1dc6a";
+      case STATUS.DEAD:
+        return "red";
+      default:
+        return "#9E9E9E";
+    }
+  }
+
   if (loading) {
     return <LoadingIndicator />;
   }
 
   return (
     <>
-      <Row>
-        {locationResidents?.map((resident) => (
-          <Col sm={locationResidents.length > 1 ? 6 : 12} key={resident.id}>
-            <img src={resident.image} alt="" />
-            <p>{resident.name}</p>
-            <p>{resident.species}</p>
-            <p>{resident.type}</p>
-            <p>{resident.gender}</p>
-            <p>{resident.origin.name}</p>
-            <p>{resident.status}</p>
-          </Col>
-        ))}
+      <Row className="py-5 px-3">
+        <div className="residentsTitleContainer">
+          <Link to="/">
+            <LeftArrowSVG className="leftArrowIcon" />
+          </Link>
+          <h1 className="title">Residents</h1>
+        </div>
+        {locationResidents.length === 0 ? (
+          <p>No Residents Here 😔</p>
+        ) : (
+          locationResidents?.map((resident) => (
+            <Col
+              lg={locationResidents?.length > 1 ? 6 : 12}
+              key={resident.id}
+              className="colContainer"
+            >
+              <Row className="residentsFlexContainer">
+                <Col sm={6} className="residentsImgContainer">
+                  <img src={resident.image} alt="" className="residentImg" />
+                </Col>
+                <Col sm={6} className="residentsDetailsContainer">
+                  <p className="residentName">
+                    {resident.name ? resident.name : "No Name"}
+                  </p>
+                  <div className="statusContainer">
+                    <p
+                      style={{
+                        backgroundColor: getBgColor(resident?.status),
+                        width: 10,
+                        height: 10,
+                        borderRadius: 10,
+                        marginRight: "10px",
+                      }}
+                    ></p>
+                    <p>{resident.status ? resident.status : "No Status"} -</p>
+                    <p className="mx-1">
+                      {resident.species ? resident.species : "No Specy"}
+                    </p>
+                  </div>
+                  <p>
+                    <span className="subTitle">Origin:</span>
+                    {resident.origin.name ? resident.origin.name : "No Origin"}
+                  </p>
+                  <p>
+                    <span className="subTitle">Type:</span>
+                    {resident.type ? resident.type : "No Type"}
+                  </p>
+                  <p>
+                    <span className="subTitle">Gender:</span>
+                    {resident.gender ? resident.gender : "No Gender"}
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          ))
+        )}
       </Row>
     </>
   );
