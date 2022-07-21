@@ -8,6 +8,7 @@ import { getLocations } from "../../redux/slices/locationSlice";
 import "./Residents.css";
 import "../CommonStyle.css";
 import { ReactComponent as LeftArrowSVG } from "../../assets/left-arrow.svg";
+import avatarImg from "../../assets/avatar.jpeg";
 
 const Residents = () => {
   const dispatch = useDispatch();
@@ -82,7 +83,7 @@ const Residents = () => {
               <Row className="flexContainer residentsFlexContainer">
                 <Col sm={6} className="imgContainer residentsImgContainer">
                   <img
-                    src={resident.image}
+                    src={resident.image ? resident.image : avatarImg}
                     alt=""
                     className="img residentImg"
                   />
