@@ -11,55 +11,18 @@
 
 .locationFlexContainer {
     width: 45%;
-    margin-bottom: 3rem;
-    background-color: #3B3E43;
-    color: white;
-    border-radius: 30px;
-    filter: drop-shadow(16px 16px 10px #9fa1a3);
-    margin-top: 3rem;
 }
 
-.locationImgContainer {
-    padding: 0;
-}
-
-.locationImg {
-    width: 100%;
-    border-radius: 30px 0 0 30px;
-}
-
-.locationDetailsContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    padding-left: 2rem;
-}
-
-.title {
-    font-family: 'Henny Penny', cursive;
-}
 
 .locationDetailsContainer p {
     font-family: 'Blaka', cursive;
     color: rgb(250, 218, 58);
+    text-align: start;
 }
 
-.subTitle {
-    font-family: 'Chewy', cursive;
-    margin-right: 1rem;
-    color: white;
-}
 
 @media screen and (max-width: 991px) {
-    .flexContainer {
+    .locationFlexContainer {
         width: 90%;
-    }
-}
-
-@media screen and (max-width: 600px) {
-    .locationImg {
-        margin-bottom: 1rem;
-        border-radius: 30px;
     }
 }

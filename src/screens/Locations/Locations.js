@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { getLocations } from "../../redux/slices/locationSlice";
 import LoadingIndicator from "../../components/LoadingIndicator";
 import "./Locations.css";
+import "../CommonStyle.css";
 import { Col, Row } from "react-bootstrap";
 import locationImg from "../../assets/rick-and-morty.jpeg";
 
@@ -26,13 +27,13 @@ const Locations = () => {
     <Col className="locationsListContainer">
       <h1 className="title">Welcome to My Rick and Morty Page !</h1>
       {locationsData?.map((location) => (
-        <Row className="locationFlexContainer" key={location.id}>
-          <Col sm={6} className="locationImgContainer">
+        <Row className="flexContainer locationFlexContainer" key={location.id}>
+          <Col sm={6} className="imgContainer locationImgContainer">
             <Link to={`/${location.id}`}>
-              <img src={locationImg} alt="" className="locationImg" />
+              <img src={locationImg} alt="" className="img locationImg" />
             </Link>
           </Col>
-          <Col sm={6} className="locationDetailsContainer">
+          <Col sm={6} className="detailsContainer locationDetailsContainer">
             <p>
               <span className="subTitle">Location:</span>{" "}
               {location.name ? location.name : "No Name"}

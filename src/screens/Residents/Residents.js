@@ -6,6 +6,7 @@ import LoadingIndicator from "../../components/LoadingIndicator";
 import { STATUS } from "../../constants/statusConstant";
 import { getLocations } from "../../redux/slices/locationSlice";
 import "./Residents.css";
+import "../CommonStyle.css";
 import { ReactComponent as LeftArrowSVG } from "../../assets/left-arrow.svg";
 
 const Residents = () => {
@@ -31,6 +32,7 @@ const Residents = () => {
     dispatch(getLocations());
   }, [dispatch]);
 
+
   useEffect(() => {
     async function fetchAllResidentsUrl() {
       const results = await Promise.all(
@@ -41,7 +43,6 @@ const Residents = () => {
     fetchAllResidentsUrl();
   }, [newResidentsUrl]);
 
-  console.log("locationResidents", locationResidents);
 
   function getBgColor(condition) {
     switch (condition) {
@@ -78,11 +79,18 @@ const Residents = () => {
               key={resident.id}
               className="colContainer"
             >
-              <Row className="residentsFlexContainer">
-                <Col sm={6} className="residentsImgContainer">
-                  <img src={resident.image} alt="" className="residentImg" />
+              <Row className="flexContainer residentsFlexContainer">
+                <Col sm={6} className="imgContainer residentsImgContainer">
+                  <img
+                    src={resident.image}
+                    alt=""
+                    className="img residentImg"
+                  />
                 </Col>
-                <Col sm={6} className="residentsDetailsContainer">
+                <Col
+                  sm={6}
+                  className="detailsContainer residentsDetailsContainer"
+                >
                   <p className="residentName">
                     {resident.name ? resident.name : "No Name"}
                   </p>
