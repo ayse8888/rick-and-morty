@@ -47,13 +47,13 @@ const Residents = () => {
   function getBgColor(condition) {
     switch (condition) {
       case STATUS.UNKNOWN:
-        return "#9E9E9E";
+        return "#ef9d50";
       case STATUS.ALIVE:
         return "#a1dc6a";
       case STATUS.DEAD:
         return "red";
       default:
-        return "#9E9E9E";
+        return "#ef9d50";
     }
   }
 
