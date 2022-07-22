@@ -36,15 +36,15 @@ const Locations = () => {
           <Col sm={6} className="detailsContainer locationDetailsContainer">
             <p>
               <span className="subTitle">Location:</span>{" "}
-              {location.name ? location.name : "No Name"}
+              {location.name ? location.name : "unknown"}
             </p>
             <p>
               <span className="subTitle">Type:</span>{" "}
-              {location.type ? location.type : "No Type"}
+              {location.type ? location.type : "unknown"}
             </p>
             <p>
               <span className="subTitle">Dimension:</span>{" "}
-              {location.dimension ? location.dimension : "No Dimension"}
+              {location.dimension ? location.dimension : "unknown"}
             </p>
             <p>
               <span className="subTitle">Residents:</span>{" "}

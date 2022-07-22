@@ -93,7 +93,7 @@ const Residents = () => {
                   className="detailsContainer residentsDetailsContainer"
                 >
                   <p className="residentName">
-                    {resident.name ? resident.name : "No Name"}
+                    {resident.name ? resident.name : "unknown"}
                   </p>
                   <div className="statusContainer">
                     <p
@@ -105,22 +105,22 @@ const Residents = () => {
                         marginRight: "10px",
                       }}
                     ></p>
-                    <p>{resident.status ? resident.status : "No Status"} -</p>
+                    <p>{resident.status ? resident.status : "unknown"} -</p>
                     <p className="mx-1">
-                      {resident.species ? resident.species : "No Specy"}
+                      {resident.species ? resident.species : "unknown"}
                     </p>
                   </div>
                   <p>
                     <span className="subTitle">Origin:</span>
-                    {resident.origin.name ? resident.origin.name : "No Origin"}
+                    {resident.origin.name ? resident.origin.name : "unknown"}
                   </p>
                   <p>
                     <span className="subTitle">Type:</span>
-                    {resident.type ? resident.type : "No Type"}
+                    {resident.type ? resident.type : "unknown"}
                   </p>
                   <p>
                     <span className="subTitle">Gender:</span>
-                    {resident.gender ? resident.gender : "No Gender"}
+                    {resident.gender ? resident.gender : "unknown"}
                   </p>
                 </Col>
               </Row>
